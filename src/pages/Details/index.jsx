@@ -11,7 +11,8 @@ export function Details() {
       <h1>Hello World!</h1>
       <span>Victor Zornek</span>
 
-      <Button />
+      <Button title="Entrar"  loading/>
+      <Button title="Voltar" />
     </Container>
   )
 }
