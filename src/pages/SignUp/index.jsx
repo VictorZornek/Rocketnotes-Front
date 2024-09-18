@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FiMail, FiLock, FiUser } from 'react-icons/fi'
 
 import { Container, Form, Background } from "./styles";
@@ -14,10 +14,26 @@ export function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
+
     function handleSignUp() {
         if(!name || !email || !password) {
             return alert("Preencha todos os campos!");
         }
+
+        api.post("/users", { name, email, password })
+        .then(() => {
+            alert("Usuário cadastrado com sucesso!");
+            navigate("/");
+        })
+        .catch(error => {
+            if(error.response) {
+                alert(error.response.data.message);
+
+            } else {
+                alert("Não foi possível cadastrar");
+            }
+        })
 
     }
 
