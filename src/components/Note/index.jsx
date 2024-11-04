@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-import { Tag } from "../Tag";
+import { Tag } from "../Tag/Index";
 
 export function Note({ data, ...rest }) {
     return(
